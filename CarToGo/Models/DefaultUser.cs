@@ -23,6 +23,7 @@ namespace CarToGo.Models
         /// <summary>
         /// EGN
         /// </summary>
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "EGN must be exactly 10 digits.")]
         public string EGN { get; set; }
         /// <summary>
         /// Phone number of the user

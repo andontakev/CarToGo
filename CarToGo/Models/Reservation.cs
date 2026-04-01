@@ -1,7 +1,15 @@
-﻿namespace CarToGo.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CarToGo.Models
 {
     public class Reservation
     {
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Key]
+        public int Id { get; set; }
         /// <summary>
         /// Id of the car
         /// </summary>
