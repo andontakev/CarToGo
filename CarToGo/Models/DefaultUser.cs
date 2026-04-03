@@ -6,11 +6,6 @@ namespace CarToGo.Models
     public class DefaultUser: IdentityUser
     {
         /// <summary>
-        /// Identifier
-        /// </summary>
-        [Key]
-        public int Id { get; set; }
-        /// <summary>
         /// First name of the user
         /// </summary>
         [Display(Name = "First Name")]

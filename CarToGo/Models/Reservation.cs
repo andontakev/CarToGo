@@ -17,22 +17,27 @@ namespace CarToGo.Models
         /// <summary>
         /// Id of the user
         /// </summary>
-        public int UserId { get; set; }
+        public string? UserId { get; set; }
         /// <summary>
         /// Start date of the reservation
         /// </summary>
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
         /// <summary>
         /// End date of the reservation
         /// </summary>
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
         /// <summary>
         /// Car navigation property
         /// </summary>
-        public Car Car { get; set; }
+        public Car? Car { get; set; }
         /// <summary>
         /// User navigation property
         /// </summary>
-        public DefaultUser User { get; set; }
+        [ForeignKey("UserId")]
+        public DefaultUser? User { get; set; }
     }
 }
