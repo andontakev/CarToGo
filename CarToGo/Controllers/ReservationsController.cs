@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using CarToGo.Data;
 using CarToGo.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarToGo.Controllers
 {
+    [Authorize]
     public class ReservationsController : Controller
     {
         private readonly CarToGoContext _context;
