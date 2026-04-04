@@ -39,7 +39,13 @@ namespace CarToGo.Models
         /// </summary>
         [ForeignKey("UserId")]
         public DefaultUser? User { get; set; }
+        /// <summary>
+        /// Gets or sets the current status message.
+        /// </summary>
         public string Status { get; set; }
+        /// <summary>
+        /// Gets the total price for the rental period
+        /// </summary>
         [NotMapped]
         public decimal TotalPrice =>
           (decimal)(EndDate - StartDate).TotalDays * Car.PricePerDay;

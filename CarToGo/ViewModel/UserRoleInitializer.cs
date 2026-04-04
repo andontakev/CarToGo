@@ -6,6 +6,10 @@ namespace CarToGo.ViewModel
 {
     public class UserRoleInitializer
     {
+        /// <summary>
+        /// Initializes the application's identity system by ensuring required roles and a default administrator user
+        /// exist.
+        /// </summary>
         public static async Task InitializeAsync(IServiceProvider serviceProvider)
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();

@@ -12,17 +12,23 @@ namespace CarToGo.Controllers
         {
             _logger = logger;
         }
-
+        /// <summary>
+        /// Index action that returns the home page view
+        /// </summary>
         public IActionResult Index()
         {
             return View();
         }
-
+        /// <summary>
+        /// Privacy action that returns the privacy page view
+        /// </summary>
         public IActionResult Privacy()
         {
             return View();
         }
-
+        /// <summary>
+        /// Error action that returns the error page
+        /// </summary>
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

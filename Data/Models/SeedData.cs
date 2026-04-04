@@ -6,13 +6,15 @@ using CarToGo.Models;
 public static class SeedData
 {
     public static void Initialize(IServiceProvider serviceProvider)
-    {
+    { 
         using (var context = new CarToGoContext(serviceProvider.GetRequiredService<DbContextOptions<CarToGoContext>>()))
         {
-            // Ако вече има коли – не правим нищо
+            
             if (context.Cars.Any())
                 return;
-
+            ///<summary>
+            /// Seed initial car data
+            /// </summary>
             context.Cars.AddRange(
             new Car
             {

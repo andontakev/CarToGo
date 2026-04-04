@@ -12,25 +12,34 @@ namespace CarToGo.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<DefaultUser> _userManager;
+        /// <summary>
+        /// AdminController constructor that initializes the RoleManager and UserManager for managing roles and users in the application.
+        /// </summary>
         public AdminController(RoleManager<IdentityRole> roleManager, UserManager<DefaultUser> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
         }
+        /// <summary>
+        /// Lists all roles in the system by retrieving them from the RoleManager and passing them to the view for display.
+        /// </summary>
         [HttpGet]
         public IActionResult ListAllRoles()
         {
             var roles = _roleManager.Roles;
             return View(roles);
         }
-
+        /// <summary>
+        /// Returns the view for adding a new role.
+        /// </summary>
         [HttpGet]
         public IActionResult AddRole()
         {
             return View();
         }
-
-        [HttpPost]
+        /// <summary>
+        /// Handles HTTP POST requests to create a new role using the specified view model.
+        /// </summary>
         public async Task<IActionResult> AddRole(AddRoleViewModel model)
         {
             if (ModelState.IsValid)
@@ -51,7 +60,10 @@ namespace CarToGo.Controllers
             }
             return View(model);
         }
-
+        /// <summary>
+        /// Displays the edit view for a specified role, allowing modification of the role's details and viewing of
+        /// associated users.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> EditRole(string id)
         {
@@ -75,7 +87,9 @@ namespace CarToGo.Controllers
             }
             return View(model);
         }
-
+        /// <summary>
+        /// Updates the name of an existing role based on the provided view model.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
@@ -105,7 +119,9 @@ namespace CarToGo.Controllers
                 return View(model);
             }
         }
-
+        /// <summary>
+        /// Updates the users assigned to a specific role based on the provided list of user-role view models
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string id)
         {
@@ -144,7 +160,9 @@ namespace CarToGo.Controllers
 
             return View(model);
         }
-
+        /// <summary>
+        /// Updates the users assigned to a specific role based on the provided list of user-role view models
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string id)
         {
@@ -176,14 +194,18 @@ namespace CarToGo.Controllers
 
             return RedirectToAction("EditRole", new { Id = id });
         }
-
+        /// <summary>
+        /// Deletes a specified role from the system after confirming the action with the user.
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> DeleteRole(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);
             return View(role);
         }
-
+        /// <summary>
+        /// Confirms the deletion of a specified role and removes it from the system if the user confirms the action.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> ConfirmDeleteRole(string id)
         {
@@ -207,17 +229,25 @@ namespace CarToGo.Controllers
                 return View(role);
             }
         }
-
+        /// <summary>
+        /// Lists all users in the system by retrieving them from the UserManager and passing them to the view for display.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> ListAllUsers()
         {
             var users = _userManager.Users.ToList();
             return View(users);
         }
-
+        /// <summary>
+        /// Creates a new user in the system based on the provided view model and password
+        /// <returns></returns>
         public IActionResult CreateUser()
         {
             return View();
         }
+        /// <summary>
+        /// Creates a new user in the system based on the provided view model and password
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> CreateUser(DefaultUser model, string password)
         {
@@ -226,21 +256,20 @@ namespace CarToGo.Controllers
                 // Username = Email
                 model.UserName = model.Email;
 
-                // Check unique Email
+                
                 if (await _userManager.FindByEmailAsync(model.Email) != null)
                 {
                     ModelState.AddModelError("Email", "This email is already in use.");
                     return View(model);
                 }
 
-                // Check unique Username
                 if (await _userManager.FindByNameAsync(model.UserName) != null)
                 {
                     ModelState.AddModelError("UserName", "This username is already in use.");
                     return View(model);
                 }
 
-                // Check unique EGN
+                
                 if (_userManager.Users.Any(u => u.EGN == model.EGN))
                 {
                     ModelState.AddModelError("EGN", "This EGN is already in use.");
@@ -264,11 +293,17 @@ namespace CarToGo.Controllers
 
             return View(model);
         }
+        /// <summary>
+        /// Edits the details of an existing user in the system based on the provided view model and updates the user's information accordingly.
+        /// </summary>
         public async Task<IActionResult> EditUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             return View(user);
         }
+        /// <summary>
+        /// Edits the details of an existing user in the system based on the provided view model and updates the user's information accordingly.
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> EditUser(DefaultUser model)
         {
@@ -285,11 +320,17 @@ namespace CarToGo.Controllers
 
             return RedirectToAction("ListAllUsers");
         }
+        /// <summary>
+        /// Deletes a specified user from the system after confirming the action with the user.
+        /// </summary>
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             return View(user);
         }
+        /// <summary>
+        /// Deletes a specified user from the system after confirming the action with the user.
+        /// </summary>
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteUserConfirmed(string id)
         {
@@ -298,7 +339,9 @@ namespace CarToGo.Controllers
 
             return RedirectToAction("ListAllUsers");
         }
-
+        /// <summary>
+        /// Details the information of a specified user by retrieving their details from the UserManager and passing them to the view for display.
+        /// </summary>
         public async Task<IActionResult> DetailsUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);

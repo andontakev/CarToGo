@@ -19,13 +19,18 @@ namespace CarToGo.Controllers
             _context = context;
         }
 
-        // GET: Cars
+        /// <summary>
+        /// Index action to display the list of cars available for rent
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             return View(await _context.Cars.ToListAsync());
         }
 
-        // GET: Cars/Details/5
+        /// <summary>
+        /// Details action to display the details 
+        /// </summary>
         public async Task<IActionResult> Details(int? id, string returnUrl = "Cars")
         {
             if (id == null)
@@ -44,15 +49,17 @@ namespace CarToGo.Controllers
             return View(car);
         }
 
-        // GET: Cars/Create
+        /// <summary>
+        /// Create action to display the form for adding a new car to the system
+        /// </summary>
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cars/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Create action to handle the form submission for adding a new car to the system
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Brand,Model,Year,Seats,Description,PricePerDay")] Car car)
@@ -66,7 +73,9 @@ namespace CarToGo.Controllers
             return View(car);
         }
 
-        // GET: Cars/Edit/5
+        /// <summary>
+        /// Edit action to display the form for editing an existing car's details
+        /// </summary>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,9 +91,9 @@ namespace CarToGo.Controllers
             return View(car);
         }
 
-        // POST: Cars/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Edit action to handle the form submission for updating an existing car's details
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Year,Seats,Description,PricePerDay")] Car car)
@@ -117,7 +126,9 @@ namespace CarToGo.Controllers
             return View(car);
         }
 
-        // GET: Cars/Delete/5
+        /// <summary>
+        /// Delete action to display the confirmation page for deleting a car from the system
+        /// </summary>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,8 +145,9 @@ namespace CarToGo.Controllers
 
             return View(car);
         }
-
-        // POST: Cars/Delete/5
+        /// <summary>
+        /// Delete action to handle the confirmation for deleting a car from the system
+        /// </summary>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -149,7 +161,9 @@ namespace CarToGo.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        /// <summary>
+        /// Checks if a car with the specified ID exists in the database
+        /// </summary>
         private bool CarExists(int id)
         {
             return _context.Cars.Any(e => e.Id == id);
