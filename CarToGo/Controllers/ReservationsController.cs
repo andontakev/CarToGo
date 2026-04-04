@@ -41,16 +41,32 @@ namespace CarToGo.Controllers;
                     ModelState.AddModelError("", "End date must be after start date.");
                     return View("New");
                 }
-                var allCars = await _context.Cars.ToListAsync();
 
-        var reservedCarIds = await _context.Reservations
-                    .Where(r => r.StartDate < endDate && startDate < r.EndDate)
-                    .Select(r => r.CarId)
-                    .ToListAsync();
+                TempData["StartDate"] = startDate.ToString("yyyy-MM-dd");
+                TempData["EndDate"] = endDate.ToString("yyyy-MM-dd");
 
-               
+                return await BuildAvailableCarsView(startDate, endDate);
+            }
+
+            [HttpGet]
+            public async Task<IActionResult> AvailableCarsByDates(string startDate, string endDate)
+            {
+                if (!DateTime.TryParse(startDate, out var start) || !DateTime.TryParse(endDate, out var end))
+                {
+                    return RedirectToAction("New");
+                }
+
+                return await BuildAvailableCarsView(start, end);
+            }
+
+            private async Task<IActionResult> BuildAvailableCarsView(DateTime startDate, DateTime endDate)
+            {
                 var availableCars = await _context.Cars
-                    .Where(c => !reservedCarIds.Contains(c.Id))
+                    .Where(c => !_context.Reservations
+                        .Any(r => r.Status != "Canceled" && 
+                                  r.CarId == c.Id &&
+                                  r.StartDate < endDate && 
+                                  startDate < r.EndDate))
                     .ToListAsync();
 
                 var model = availableCars.Select(c => new AvailableCarViewModel
@@ -66,7 +82,21 @@ namespace CarToGo.Controllers;
                     EndDate = endDate
                 }).ToList();
 
-                return View(model);
+                return View("AvailableCars", model);
+            }
+
+            [HttpGet]
+            public IActionResult AvailableCarsBack()
+            {
+                var startDateStr = TempData["StartDate"]?.ToString();
+                var endDateStr = TempData["EndDate"]?.ToString();
+
+                if (string.IsNullOrEmpty(startDateStr) || string.IsNullOrEmpty(endDateStr))
+                {
+                    return RedirectToAction("New");
+                }
+
+                return RedirectToAction("AvailableCarsByDates", new { startDate = startDateStr, endDate = endDateStr });
             }
 
             
@@ -75,9 +105,10 @@ namespace CarToGo.Controllers;
             {
                 var user = await _userManager.GetUserAsync(User);
 
-                // Проверка за припокриване
+                // Проверка за припокриване (excluding cancelled reservations)
                 bool overlaps = await _context.Reservations
                     .AnyAsync(r => r.CarId == carId &&
+                                   r.Status != "Canceled" &&
                                    r.StartDate < endDate &&
                                    startDate < r.EndDate);
 
@@ -117,6 +148,22 @@ namespace CarToGo.Controllers;
                     .ToListAsync();
 
                 return View(reservations);
+            }
+
+            [HttpPost]
+            public async Task<IActionResult> Cancel(int id)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                var reservation = await _context.Reservations
+                    .FirstOrDefaultAsync(r => r.Id == id && r.UserId == user.Id);
+
+                if (reservation != null && reservation.Status == "Pending")
+                {
+                    reservation.Status = "Canceled";
+                    await _context.SaveChangesAsync();
+                }
+
+                return RedirectToAction("MyReservations");
             }
 
            

@@ -26,7 +26,7 @@ namespace CarToGo.Controllers
         }
 
         // GET: Cars/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string returnUrl = "Cars")
         {
             if (id == null)
             {
@@ -40,6 +40,7 @@ namespace CarToGo.Controllers
                 return NotFound();
             }
 
+            ViewBag.ReturnUrl = returnUrl;
             return View(car);
         }
 

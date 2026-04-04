@@ -4,6 +4,7 @@
     ViewData["Title"] = "Details";
     var imageName = Model.Brand.ToLower() + ".png";
     var imageUrl = "/images/cars/" + imageName;
+    var returnUrl = ViewBag.ReturnUrl ?? "Cars";
 }
 
 <section class="section">
@@ -25,7 +26,14 @@
                     {
                         <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
                     }
-                    <a asp-action="Index" class="btn btn-outline-light ms-2">Back to List</a>
+                    @if (returnUrl == "AvailableCars")
+                    {
+                        <a asp-controller="Reservations" asp-action="AvailableCarsBack" class="btn btn-outline-light ms-2">Back to Reservations</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Index" class="btn btn-outline-light ms-2">Back to List</a>
+                    }
                 </div>
             </div>
             <div class="col-lg-4">
