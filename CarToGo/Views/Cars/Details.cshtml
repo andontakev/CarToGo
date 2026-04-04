@@ -2,53 +2,37 @@
 
 @{
     ViewData["Title"] = "Details";
+    var imageName = Model.Brand.ToLower() + ".png";
+    var imageUrl = "/images/cars/" + imageName;
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Car</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Seats)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Seats)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PricePerDay)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PricePerDay)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<section class="section">
+    <div class="container px-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1>@Model.Brand @Model.Model</h1>
+                <p class="lead">@Model.Description</p>
+                <dl class="row">
+                    <dt class="col-sm-3">Year</dt>
+                    <dd class="col-sm-9">@Model.Year</dd>
+                    <dt class="col-sm-3">Seats</dt>
+                    <dd class="col-sm-9">@Model.Seats</dd>
+                    <dt class="col-sm-3">Price per Day</dt>
+                    <dd class="col-sm-9">@string.Format("{0:0.00} €", Model.PricePerDay)</dd>
+                </dl>
+                <div class="mt-4">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                    }
+                    <a asp-action="Index" class="btn btn-outline-light ms-2">Back to List</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="fleet-card-image">
+                    <img src="@imageUrl" alt="@Model.Brand @Model.Model" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

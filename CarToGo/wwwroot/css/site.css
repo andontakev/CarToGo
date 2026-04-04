@@ -247,35 +247,24 @@ footer.footer {
   box-shadow: inset 0 8px 36px rgba(0, 0, 0, 0.18);
 }
 
+.car-visual-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .car-window {
-  position: absolute;
-  top: 24%;
-  left: 10%;
-  width: 72%;
-  height: 34%;
-  border-radius: 28px 28px 18px 18px;
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  display: none;
 }
 
 .car-wheel {
-  position: absolute;
-  bottom: -14px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.08);
+  display: none;
 }
 
-.wheel-front {
-  right: 24%;
-  animation: floatWheel 3.5s ease-in-out infinite;
-}
-
+.wheel-front,
 .wheel-back {
-  left: 18%;
-  animation: floatWheel 3.5s ease-in-out infinite reverse;
+  display: none;
 }
 
 .car-specs {
@@ -570,6 +559,9 @@ a:hover {
   color: #dbe7ff;
   font-size: 0.83rem;
   font-weight: 600;
+  white-space: nowrap;
+  min-width: max-content;
+  flex: 0 0 auto;
 }
 
 .fleet-grid {
@@ -602,8 +594,12 @@ a:hover {
 .fleet-card-image {
   position: relative;
   width: 100%;
-  min-height: 220px;
-  background: linear-gradient(180deg, rgba(77, 176, 255, 0.16), rgba(255, 255, 255, 0.04));
+  height: 220px;
+  background: linear-gradient(
+    180deg,
+    rgba(77, 176, 255, 0.16),
+    rgba(255, 255, 255, 0.04)
+  );
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -613,7 +609,7 @@ a:hover {
 .fleet-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 

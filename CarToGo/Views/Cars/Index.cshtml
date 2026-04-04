@@ -1,74 +1,70 @@
-﻿@model IEnumerable<CarToGo.Models.Car>
+﻿@using System.Linq
+@model IEnumerable<CarToGo.Models.Car>
 
 @{
-    ViewData["Title"] = "List of cars";
+    ViewData["Title"] = "Browse Cars";
 }
 
-<h1>List of cars</h1>
+<section class="page-hero page-hero-sm">
+    <div class="container px-4">
+        <div class="page-hero-content reveal">
+            <span class="eyebrow">Available fleet</span>
+            <h1>Browse cars for every trip</h1>
+            <p class="lead">Find the vehicles that match your style, budget, and travel plans. Reserve easily and get on the road faster.</p>
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="btn btn-primary btn-lg mt-3" asp-action="Create">Add New Car</a>
+            }
+        </div>
+    </div>
+</section>
 
-@if (User.IsInRole("Admin"))
-{
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-}
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Year)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Seats)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PricePerDay)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Seats)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PricePerDay)
-            </td>
-            <td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    } |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                @if (User.IsInRole("Admin"))
-                    {         
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    }
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<section class="section">
+    <div class="container px-4">
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">No cars are available right now. Please check back soon.</div>
+        }
+        else
+        {
+            <div class="fleet-grid">
+                @foreach (var item in Model)
+                {
+                    var imageName = item.Brand.ToLower() + ".png";
+                    var imageUrl = "/images/cars/" + imageName;
+                    var fallbackImageUrl = "/images/cars/" + imageName.Replace(".png", ".jpg");
+                    <article class="fleet-card reveal">
+                        <div class="fleet-card-image" id="car-image-@item.Id">
+                            <img src="@imageUrl" alt="Images are coming soon" onerror="this.onerror=null; this.src='@fallbackImageUrl';" />
+                        </div>
+                        <div class="fleet-card-body">
+                            <div class="fleet-card-header">
+                                <div>
+                                    <h3>@item.Brand @item.Model</h3>
+                                    <p class="text-muted">@item.Year · @item.Seats seats</p>
+                                </div>
+                                <span class="badge-glow">@string.Format("{0:0.00} €", item.PricePerDay)</span>
+                            </div>
+                            <p>@item.Description</p>
+                            <div class="fleet-card-meta">
+                                <span>@item.Brand</span>
+                                <span>@item.Model</span>
+                                <span>@item.Year</span>
+                            </div>
+                            <div class="fleet-card-footer">
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a class="btn btn-outline-light btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                        <a class="btn btn-outline-secondary btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div>
+        }
+    </div>
+</section>
