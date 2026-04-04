@@ -27,14 +27,14 @@ else
         <tbody>
             @foreach (var car in Model)
             {
-                <tr>
-                    <td>@car.Brand @car.Model</td>
-                    <td>@car.Year</td>
-                    <td>@car.Seats</td>
-                    <td>@car.PricePerDay</td>
-                    <td>@car.TotalPrice</td>
+                <tr class="text-white">
+                    <td class="text-white">@car.Brand @car.Model</td>
+                    <td class="text-white">@car.Year</td>
+                    <td class="text-white">@car.Seats</td>
+                    <td class="text-white">@car.PricePerDay</td>
+                    <td class="text-white">@car.TotalPrice</td>
                     <td>
-                        <a asp-controller="Car" asp-action="Details" asp-route-id="@car.CarId" class="btn btn-info">
+                        <a asp-controller="Cars" asp-action="Details" asp-route-id="@car.CarId" asp-route-returnUrl="AvailableCars" class="btn btn-info">
                             Details
                         </a>
 
