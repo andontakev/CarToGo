@@ -207,5 +207,103 @@ namespace CarToGo.Controllers
                 return View(role);
             }
         }
+
+        public async Task<IActionResult> ListAllUsers()
+        {
+            var users = _userManager.Users.ToList();
+            return View(users);
+        }
+
+        public IActionResult CreateUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(DefaultUser model, string password)
+        {
+            if(ModelState.IsValid)
+    {
+                // Username = Email
+                model.UserName = model.Email;
+
+                // Check unique Email
+                if (await _userManager.FindByEmailAsync(model.Email) != null)
+                {
+                    ModelState.AddModelError("Email", "This email is already in use.");
+                    return View(model);
+                }
+
+                // Check unique Username
+                if (await _userManager.FindByNameAsync(model.UserName) != null)
+                {
+                    ModelState.AddModelError("UserName", "This username is already in use.");
+                    return View(model);
+                }
+
+                // Check unique EGN
+                if (_userManager.Users.Any(u => u.EGN == model.EGN))
+                {
+                    ModelState.AddModelError("EGN", "This EGN is already in use.");
+
+                    return View(model);
+                }
+
+                model.EmailConfirmed = true;
+
+                var result = await _userManager.CreateAsync(model, password);
+
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(model, "User");
+                    return RedirectToAction("ListAllUsers");
+                }
+
+                foreach (var error in result.Errors)
+                    ModelState.AddModelError("", error.Description);
+            }
+
+            return View(model);
+        }
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            return View(user);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUser(DefaultUser model)
+        {
+            var user = await _userManager.FindByIdAsync(model.Id);
+
+            user.Email = model.Email;
+            user.UserName = model.Email;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.EGN = model.EGN;
+            user.PhoneNumber = model.PhoneNumber;
+
+            await _userManager.UpdateAsync(user);
+
+            return RedirectToAction("ListAllUsers");
+        }
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            return View(user);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteUserConfirmed(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            await _userManager.DeleteAsync(user);
+
+            return RedirectToAction("ListAllUsers");
+        }
+
+        public async Task<IActionResult> DetailsUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            return View(user);
+        }
+
     }
 }

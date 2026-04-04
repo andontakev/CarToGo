@@ -1,0 +1,32 @@
+﻿@model List<DefaultUser>
+
+<h2>Users</h2>
+
+<a href="/Admin/CreateUser" class="btn btn-primary mb-3">Create New User</a>
+
+<table class="table">
+    <tr>
+        <th>№</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>EGN</th>
+        <th>Phone Number</th>
+        <th>Actions</th>
+    </tr>
+
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <tr>
+            <td>@(i + 1)</td>
+            <td>@Model[i].Email</td>
+            <td>@Model[i].FirstName @Model[i].LastName</td>
+            <td>@Model[i].EGN</td>
+            <td>@Model[i].PhoneNumber</td>
+            <td>
+                <a href="/Admin/EditUser/@Model[i].Id">Edit</a> |
+                <a href="/Admin/DetailsUser/@Model[i].Id">Details</a> |
+                <a href="/Admin/DeleteUser/@Model[i].Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
