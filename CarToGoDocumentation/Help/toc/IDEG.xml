@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="12b1b727-56e8-7467-64fa-443d746bb10a.htm">Car<wbr />To<wbr />Go.<wbr />Migrations</a>
+    </li>
+    <li>
+      <a href="9b9720ac-00e0-6227-98a2-ad216ed2216b.htm">Default<wbr />User<wbr />3</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="92f886af-ae98-21f0-1840-f21b380e6789" href="92f886af-ae98-21f0-1840-f21b380e6789.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="ca431ffe-98f4-1ef0-c38c-51a5231921bc" href="ca431ffe-98f4-1ef0-c38c-51a5231921bc.htm">Properties</a>
+    </li>
+    <li>
+      <a id="232f39c8-cb4b-1579-5c70-f2657e3cf88e" class="has-submenu" href="232f39c8-cb4b-1579-5c70-f2657e3cf88e.htm">
+        <span data-tocFile="../toc/IDCEG.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Methods</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+  </tocItems>
+</toc>

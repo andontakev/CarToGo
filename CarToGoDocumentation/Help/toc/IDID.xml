@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="58a5939e-925d-47f7-26be-763759abba2f.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account</a>
+    </li>
+    <li>
+      <a href="4510ff3c-6902-acf9-fc38-b29f4366b349.htm">Lockout<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="f4a80e71-1b22-18cf-8f34-032e31459716" href="f4a80e71-1b22-18cf-8f34-032e31459716.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="4d501033-ef41-500c-c834-6778bf4e87f6" href="4d501033-ef41-500c-c834-6778bf4e87f6.htm">Properties</a>
+    </li>
+    <li>
+      <a id="74c98484-65b3-9603-a816-9e300d21256a" class="has-submenu" href="74c98484-65b3-9603-a816-9e300d21256a.htm">
+        <span data-tocFile="../toc/IDCID.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Methods</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+  </tocItems>
+</toc>

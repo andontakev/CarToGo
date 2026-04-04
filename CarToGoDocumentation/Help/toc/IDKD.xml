@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="58a5939e-925d-47f7-26be-763759abba2f.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account</a>
+    </li>
+    <li>
+      <a href="2bd2990d-a35e-f700-0db6-9f2b30ef76c9.htm">Login<wbr />Model.<wbr />Input<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="17057576-a5c8-3fb6-2104-bf67cb6c62b5" href="17057576-a5c8-3fb6-2104-bf67cb6c62b5.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="3513c8d7-c94a-0b2a-a4e9-3fd0ef7f4a29" class="has-submenu" href="3513c8d7-c94a-0b2a-a4e9-3fd0ef7f4a29.htm">
+        <span data-tocFile="../toc/IDBKD.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Properties</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="10f3ca82-089c-7784-0627-a1bbdc9c37b9" href="10f3ca82-089c-7784-0627-a1bbdc9c37b9.htm">Methods</a>
+    </li>
+  </tocItems>
+</toc>

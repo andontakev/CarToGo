@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="58a5939e-925d-47f7-26be-763759abba2f.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account</a>
+    </li>
+    <li>
+      <a href="56a01514-7b09-3d84-0050-8bc27874adcb.htm">External<wbr />Login<wbr />Model.<wbr />Input<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="c4e81d2f-2c01-e02d-75cf-a651cf5b94df" href="c4e81d2f-2c01-e02d-75cf-a651cf5b94df.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="ca1383de-f941-3b9e-639b-8012cece4c6c" class="has-submenu" href="ca1383de-f941-3b9e-639b-8012cece4c6c.htm">
+        <span data-tocFile="../toc/IDBED.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Properties</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="943ace0d-9cad-e73b-f1c6-5be94d489fcd" href="943ace0d-9cad-e73b-f1c6-5be94d489fcd.htm">Methods</a>
+    </li>
+  </tocItems>
+</toc>

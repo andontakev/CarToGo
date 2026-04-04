@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="3a24b51c-bcfc-b4e8-013e-5b30b72dab1e.htm">Car<wbr />To<wbr />Go.<wbr />Controllers</a>
+    </li>
+    <li>
+      <a href="f575dd0a-27f9-6334-5c19-19734a391f7f.htm">Cars<wbr />Controller</a>
+    </li>
+    <li>
+      <a href="d30f27f2-bef4-05cc-0148-7a49e0a017c7.htm">Methods</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="eeda5b66-3bd7-3b4f-92bc-308877008c25" class="has-submenu" href="eeda5b66-3bd7-3b4f-92bc-308877008c25.htm">
+        <span data-tocFile="../toc/IDACBF.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Create</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="bcdf140c-ca29-4017-79b5-e05fdcae8df7" href="bcdf140c-ca29-4017-79b5-e05fdcae8df7.htm">Delete</a>
+    </li>
+    <li>
+      <a id="e3e41bf3-b88f-a361-d04b-910e8c31538b" href="e3e41bf3-b88f-a361-d04b-910e8c31538b.htm">Delete<wbr />Confirmed</a>
+    </li>
+    <li>
+      <a id="8041c2a7-64c6-85e1-f9c7-4185e8478504" href="8041c2a7-64c6-85e1-f9c7-4185e8478504.htm">Details</a>
+    </li>
+    <li>
+      <a id="9a10ef08-f0fd-6024-d0d8-82074801de1d" class="has-submenu" href="9a10ef08-f0fd-6024-d0d8-82074801de1d.htm">
+        <span data-tocFile="../toc/IDECBF.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Edit</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="5783b8ca-8ef5-2ed1-deb2-2aa3e54f847f" href="5783b8ca-8ef5-2ed1-deb2-2aa3e54f847f.htm">Index</a>
+    </li>
+  </tocItems>
+</toc>

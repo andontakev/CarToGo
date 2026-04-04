@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="58a5939e-925d-47f7-26be-763759abba2f.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account</a>
+    </li>
+    <li>
+      <a href="04fdd266-e052-5f31-d26c-01009c57a7c6.htm">Register<wbr />Confirmation<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="96d32773-f884-a033-42c2-135700045472" href="96d32773-f884-a033-42c2-135700045472.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="08754fdc-6c70-b706-0a80-05e54d1f7b90" class="has-submenu" href="08754fdc-6c70-b706-0a80-05e54d1f7b90.htm">
+        <span data-tocFile="../toc/IDBQD.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Properties</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="26927139-7dcb-6761-478a-b7daba0bc6f1" class="has-submenu" href="26927139-7dcb-6761-478a-b7daba0bc6f1.htm">
+        <span data-tocFile="../toc/IDCQD.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Methods</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+  </tocItems>
+</toc>

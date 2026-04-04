@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="58a5939e-925d-47f7-26be-763759abba2f.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account</a>
+    </li>
+    <li>
+      <a href="2282bf0c-8e86-a291-741a-759927b6ea62.htm">Resend<wbr />Email<wbr />Confirmation<wbr />Model.<wbr />Input<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="c29fe85c-8efc-092c-7d5e-07c72470f5f0" href="c29fe85c-8efc-092c-7d5e-07c72470f5f0.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="641fdcbb-de07-33d6-662a-34c65071abca" class="has-submenu" href="641fdcbb-de07-33d6-662a-34c65071abca.htm">
+        <span data-tocFile="../toc/IDBUD.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Properties</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="76fad006-e5a3-c571-9271-d3372f82ccd0" href="76fad006-e5a3-c571-9271-d3372f82ccd0.htm">Methods</a>
+    </li>
+  </tocItems>
+</toc>

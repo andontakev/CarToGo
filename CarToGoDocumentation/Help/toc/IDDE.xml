@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="b25c4081-3095-be74-9d4c-fb3632660471.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account.<wbr />Manage</a>
+    </li>
+    <li>
+      <a href="00a0fe2a-cb6f-f175-6bd6-a0af1d13b849.htm">Delete<wbr />Personal<wbr />Data<wbr />Model.<wbr />Input<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="f1ed26b4-ea0a-648e-eba1-41a3e189b7df" href="f1ed26b4-ea0a-648e-eba1-41a3e189b7df.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="37fb953d-0c3f-f23a-dd75-a8572dcee836" class="has-submenu" href="37fb953d-0c3f-f23a-dd75-a8572dcee836.htm">
+        <span data-tocFile="../toc/IDBDE.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Properties</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="8f35a157-37fa-35be-9351-c902d92dcd52" href="8f35a157-37fa-35be-9351-c902d92dcd52.htm">Methods</a>
+    </li>
+  </tocItems>
+</toc>

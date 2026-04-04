@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="12b1b727-56e8-7467-64fa-443d746bb10a.htm">Car<wbr />To<wbr />Go.<wbr />Migrations</a>
+    </li>
+    <li>
+      <a href="fba69f70-15fb-0e41-8dfe-fb169dd7176a.htm">new<wbr />1</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="f19eb6ff-8626-2fa5-9a9a-288e5ef3c099" href="f19eb6ff-8626-2fa5-9a9a-288e5ef3c099.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="17c5594d-a1fc-7a8e-7d0e-00c866c9be87" href="17c5594d-a1fc-7a8e-7d0e-00c866c9be87.htm">Properties</a>
+    </li>
+    <li>
+      <a id="a6b127bf-183a-4729-c46b-cffc5d6be98f" class="has-submenu" href="a6b127bf-183a-4729-c46b-cffc5d6be98f.htm">
+        <span data-tocFile="../toc/IDCJG.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Methods</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+  </tocItems>
+</toc>

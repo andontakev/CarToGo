@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="b25c4081-3095-be74-9d4c-fb3632660471.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account.<wbr />Manage</a>
+    </li>
+    <li>
+      <a href="1e1a5080-18ff-bc91-9879-2f3569f63ebb.htm">External<wbr />Logins<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="c8eee368-2636-fc5d-a2c7-8f9bc21bf7e5" href="c8eee368-2636-fc5d-a2c7-8f9bc21bf7e5.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="5dea8db9-6ec9-9fc5-4dac-35ba4e113d58" class="has-submenu" href="5dea8db9-6ec9-9fc5-4dac-35ba4e113d58.htm">
+        <span data-tocFile="../toc/IDBKE.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Properties</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="d91b6998-c366-a4ed-82b2-59407f6c2897" class="has-submenu" href="d91b6998-c366-a4ed-82b2-59407f6c2897.htm">
+        <span data-tocFile="../toc/IDCKE.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Methods</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+  </tocItems>
+</toc>

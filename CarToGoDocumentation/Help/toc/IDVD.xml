@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="58a5939e-925d-47f7-26be-763759abba2f.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account</a>
+    </li>
+    <li>
+      <a href="61403c63-b52e-0465-7256-50e0b4d7d3c1.htm">Reset<wbr />Password<wbr />Confirmation<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="90b9683f-b0fc-2a6a-93a1-2f140d4f8114" href="90b9683f-b0fc-2a6a-93a1-2f140d4f8114.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="b2d58daf-eefe-a62a-5f81-3cf6ea48fddf" href="b2d58daf-eefe-a62a-5f81-3cf6ea48fddf.htm">Properties</a>
+    </li>
+    <li>
+      <a id="a6290d37-913e-82f8-804d-03f18fe775fa" class="has-submenu" href="a6290d37-913e-82f8-804d-03f18fe775fa.htm">
+        <span data-tocFile="../toc/IDCVD.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Methods</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+  </tocItems>
+</toc>

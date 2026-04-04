@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toc>
+  <breadcrumbs>
+    <li>
+      <a href="4702775b-44d8-48c9-80f6-0fa66d1147c2.htm">Docs</a>
+    </li>
+    <li>
+      <a href="58a5939e-925d-47f7-26be-763759abba2f.htm">Car<wbr />To<wbr />Go.<wbr />Areas.<wbr />Identity.<wbr />Pages.<wbr />Account</a>
+    </li>
+    <li>
+      <a href="745e6ddc-eba4-bf8a-c189-bc4dcee7ecda.htm">Reset<wbr />Password<wbr />Model.<wbr />Input<wbr />Model</a>
+    </li>
+  </breadcrumbs>
+  <tocItems>
+    <li>
+      <a id="c1698e30-42ec-6c09-7580-4c687358174a" href="c1698e30-42ec-6c09-7580-4c687358174a.htm">Constructor</a>
+    </li>
+    <li>
+      <a id="07283b5f-13e2-6680-4c9a-826c963a9f45" class="has-submenu" href="07283b5f-13e2-6680-4c9a-826c963a9f45.htm">
+        <span data-tocFile="../toc/IDBXD.xml" class="icon toggle" onclick="ToggleExpandCollapse(this); return false;">
+          <i class="fa fa-angle-right"> </i>
+        </span>Properties</a>
+      <ul class="toc-menu is-hidden"> </ul>
+    </li>
+    <li>
+      <a id="3081dff0-6c0a-e073-21e2-473da734140b" href="3081dff0-6c0a-e073-21e2-473da734140b.htm">Methods</a>
+    </li>
+  </tocItems>
+</toc>
