@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Tests/">
+    <Project Path="CarToGoTests/CarToGoTests.csproj" Id="af6cbf1d-233b-46b7-9ba8-89b6c6b9197a" />
+  </Folder>
   <Project Path="CarToGo/CarToGo.csproj" />
   <Project Path="Data/Data.csproj" Id="6a5a10cc-a6e3-49a5-b47c-1939619943aa" />
 </Solution>
