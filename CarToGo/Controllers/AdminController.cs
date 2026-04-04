@@ -185,7 +185,7 @@ namespace CarToGo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteRole(string id)
+        public async Task<IActionResult> ConfirmDeleteRole(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);
             if (role == null)
