@@ -1,0 +1,51 @@
+﻿@using CarToGo.Models;
+@model List<Reservation>
+
+@{
+    ViewData["Title"] = "My Reservations";
+}
+
+<h2>My Reservations</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">You have no reservations yet.</div>
+}
+else
+{
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Car</th>
+                <th>Period</th>
+                <th>Total Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td>@r.Car.Brand @r.Car.Model</td>
+                    <td>@r.StartDate.ToShortDateString() - @r.EndDate.ToShortDateString()</td>
+                    <td>@r.TotalPrice</td>
+                    <td>
+                        @if (r.Status == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        }
+                        else if (r.Status == "Approved")
+                        {
+                            <span class="badge bg-success">Approved</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Rejected</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

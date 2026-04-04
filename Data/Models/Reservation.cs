@@ -39,5 +39,9 @@ namespace CarToGo.Models
         /// </summary>
         [ForeignKey("UserId")]
         public DefaultUser? User { get; set; }
+        public string Status { get; set; }
+        [NotMapped]
+        public decimal TotalPrice =>
+          (decimal)(EndDate - StartDate).TotalDays * Car.PricePerDay;
     }
 }

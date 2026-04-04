@@ -1,7 +1,8 @@
 ﻿using CarToGo.Controllers;
+using CarToGo.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace CarToGo.Models
+namespace CarToGo.ViewModel
 {
     public class UserRoleInitializer
     {

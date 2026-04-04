@@ -1,175 +1,166 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CarToGo.Data;
-using CarToGo.Models;
-using System.Security.Claims;
+﻿using CarToGo.Models;
+using CarToGo.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace CarToGo.Controllers
-{
-    [Authorize]
-    public class ReservationsController : Controller
-    {
-        private readonly CarToGoContext _context;
+namespace CarToGo.Controllers;
 
-        public ReservationsController(CarToGoContext context)
+        [Authorize]
+        public class ReservationsController : Controller
         {
-            _context = context;
-        }
+            private readonly Data.CarToGoContext _context;
+            private readonly UserManager<DefaultUser> _userManager;
 
-        // GET: Reservations
-        public async Task<IActionResult> Index()
-        {
-            var carToGoContext = _context.Reservations.Include(r => r.Car).Include(r => r.User);
-            return View(await carToGoContext.ToListAsync());
-        }
-
-        // GET: Reservations/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
+            public ReservationsController(Data.CarToGoContext context, UserManager<DefaultUser> userManager)
             {
-                return NotFound();
+                _context = context;
+                _userManager = userManager;
             }
 
-            var reservation = await _context.Reservations
-                .Include(r => r.Car)
-                .Include(r => r.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (reservation == null)
+            [HttpGet]
+            public IActionResult New()
             {
-                return NotFound();
+                return View();
             }
 
-            return View(reservation);
-        }
-
-        // GET: Reservations/Create
-        public IActionResult Create()
-        {
-            ViewBag.Car = new SelectList(_context.Cars, "Id", "Id");
-            //ViewBag.User = new SelectList(_context.Users, "Id", "Id");
-            return View();
-        }
-
-        // POST: Reservations/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CarId,StartDate,EndDate")] Reservation reservation)
-        {
-            reservation.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var errors =ModelState.Values.SelectMany(v => v.Errors).ToList();
-            if (ModelState.IsValid)
+            
+            [HttpPost]
+            public async Task<IActionResult> AvailableCars(DateTime startDate, DateTime endDate)
             {
-                _context.Add(reservation);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewBag.Car = new SelectList(_context.Cars, "Id", "Id", reservation.CarId);
-            //ViewBag.User = new SelectList(_context.Users, "Id", "Id", reservation.UserId);
-            return View(reservation);
-        }
-
-        // GET: Reservations/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reservation = await _context.Reservations.FindAsync(id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-            ViewBag.Car = new SelectList(_context.Cars, "Id", "Id", reservation.CarId);
-            //ViewBag.User = new SelectList(_context.Users, "Id", "Id", reservation.UserId);
-            return View(reservation);
-        }
-
-        // POST: Reservations/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CarId,UserId,StartDate,EndDate")] Reservation reservation)
-        {
-            if (id != reservation.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                if (startDate.Date < DateTime.Today)
                 {
-                    _context.Update(reservation);
+                    ModelState.AddModelError("", "Start date cannot be in the past.");
+                    return View("New");
+                }
+
+                if (endDate <= startDate)
+                {
+                    ModelState.AddModelError("", "End date must be after start date.");
+                    return View("New");
+                }
+
+                var reservedCarIds = await _context.Reservations
+                    .Where(r => r.StartDate < endDate && startDate < r.EndDate)
+                    .Select(r => r.CarId)
+                    .ToListAsync();
+
+               
+                var availableCars = await _context.Cars
+                    .Where(c => !reservedCarIds.Contains(c.Id))
+                    .ToListAsync();
+
+                var model = availableCars.Select(c => new AvailableCarViewModel
+                {
+                    CarId = c.Id,
+                    Brand = c.Brand,
+                    Model = c.Model,
+                    Year = c.Year,
+                    Seats = c.Seats,
+                    PricePerDay = c.PricePerDay,
+                    TotalPrice = (decimal)(endDate - startDate).TotalDays * c.PricePerDay,
+                    StartDate = startDate,
+                    EndDate = endDate
+                }).ToList();
+
+                return View(model);
+            }
+
+            
+            [HttpPost]
+            public async Task<IActionResult> MakeReservation(int carId, DateTime startDate, DateTime endDate)
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                // Проверка за припокриване
+                bool overlaps = await _context.Reservations
+                    .AnyAsync(r => r.CarId == carId &&
+                                   r.StartDate < endDate &&
+                                   startDate < r.EndDate);
+
+                if (overlaps)
+                {
+                    TempData["Error"] = "This car is already reserved for the selected period.";
+                    return RedirectToAction("New");
+                }
+
+                var car = await _context.Cars.FindAsync(carId);
+
+                var reservation = new Reservation
+                {
+                    CarId = carId,
+                    UserId = user.Id,
+                    StartDate = startDate,
+                    EndDate = endDate,
+                    Status = "Pending"
+                };
+
+                _context.Reservations.Add(reservation);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("MyReservations");
+            }
+
+      
+            [HttpGet]
+            public async Task<IActionResult> MyReservations()
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                var reservations = await _context.Reservations
+                    .Include(r => r.Car)
+                    .Where(r => r.UserId == user.Id)
+                    .OrderByDescending(r => r.StartDate)
+                    .ToListAsync();
+
+                return View(reservations);
+            }
+
+           
+            [Authorize(Roles = "Admin")]
+            public async Task<IActionResult> Manage()
+            {
+                var reservations = await _context.Reservations
+                    .Include(r => r.Car)
+                    .Include(r => r.User)
+                    .OrderBy(r => r.Status)
+                    .ToListAsync();
+
+                return View(reservations);
+            }
+
+          
+            [Authorize(Roles = "Admin")]
+            public async Task<IActionResult> Approve(int id)
+            {
+                var reservation = await _context.Reservations.FindAsync(id);
+
+                if (reservation != null)
+                {
+                    reservation.Status = "Approved";
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+
+                return RedirectToAction("Manage");
+            }
+
+            
+            [Authorize(Roles = "Admin")]
+            public async Task<IActionResult> Reject(int id)
+            {
+                var reservation = await _context.Reservations.FindAsync(id);
+
+                if (reservation != null)
                 {
-                    if (!ReservationExists(reservation.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    reservation.Status = "Rejected";
+                    await _context.SaveChangesAsync();
                 }
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction("Manage");
             }
-            ViewBag.Car = new SelectList(_context.Cars, "Id", "Id", reservation.CarId);
-            //ViewBag.User = new SelectList(_context.Users, "Id", "Id", reservation.UserId);
-            return View(reservation);
         }
+    
 
-        // GET: Reservations/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var reservation = await _context.Reservations
-                .Include(r => r.Car)
-                .Include(r => r.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
 
-            return View(reservation);
-        }
-
-        // POST: Reservations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var reservation = await _context.Reservations.FindAsync(id);
-            if (reservation != null)
-            {
-                _context.Reservations.Remove(reservation);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ReservationExists(int id)
-        {
-            return _context.Reservations.Any(e => e.Id == id);
-        }
-    }
-}

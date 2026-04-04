@@ -1,8 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
+using IndexAttribute = Microsoft.EntityFrameworkCore.IndexAttribute;
 
 namespace CarToGo.Models
 {
+    [Index(nameof(EGN), IsUnique = true)]
+    [Index(nameof(Email), IsUnique = true)]
     public class DefaultUser: IdentityUser
     {
         /// <summary>
@@ -24,10 +30,12 @@ namespace CarToGo.Models
         /// Phone number of the user
         /// </summary>
         [Display(Name = "Phone Number")]
+        [Phone(ErrorMessage = "Invalid phone number format.")]
         public string PhoneNumber { get; set; }
         /// <summary>
         /// Email of the user
         /// </summary>
+        [EmailAddress]
         public string Email { get; set; }
     }
 }

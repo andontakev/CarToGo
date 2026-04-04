@@ -2,6 +2,7 @@ using CarToGo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using CarToGo.Models;
+using CarToGo.ViewModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,8 +41,10 @@ app.MapRazorPages();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<CarToGoContext>();
     try
     {
+        dbContext.Database.EnsureCreated();
         UserRoleInitializer.InitializeAsync(services).Wait();
     }
     catch (Exception ex)

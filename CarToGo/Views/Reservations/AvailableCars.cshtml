@@ -1,0 +1,53 @@
+﻿@using CarToGo.ViewModel;
+@model List<AvailableCarViewModel>
+
+@{
+    ViewData["Title"] = "Available Cars";
+}
+
+<h2>Available Cars</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">No cars available for the selected period.</div>
+}
+else
+{
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Car</th>
+                <th>Year</th>
+                <th>Seats</th>
+                <th>Price/Day</th>
+                <th>Total Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.Brand @car.Model</td>
+                    <td>@car.Year</td>
+                    <td>@car.Seats</td>
+                    <td>@car.PricePerDay</td>
+                    <td>@car.TotalPrice</td>
+                    <td>
+                        <a asp-controller="Car" asp-action="Details" asp-route-id="@car.CarId" class="btn btn-info">
+                            Details
+                        </a>
+
+                        <form asp-action="MakeReservation" method="post" style="display:inline;">
+                            <input type="hidden" name="CarId" value="@car.CarId" />
+                            <input type="hidden" name="StartDate" value="@car.StartDate" />
+                            <input type="hidden" name="EndDate" value="@car.EndDate" />
+                            <button type="submit" class="btn btn-success">Make Reservation</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

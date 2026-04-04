@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="CarToGo/CarToGo.csproj" />
+  <Project Path="Data/Data.csproj" Id="6a5a10cc-a6e3-49a5-b47c-1939619943aa" />
 </Solution>
