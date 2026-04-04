@@ -1,4 +1,5 @@
-﻿using CarToGo.Models;
+﻿using CarToGo.Data;
+using CarToGo.Models;
 using CarToGo.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,10 +11,10 @@ namespace CarToGo.Controllers;
         [Authorize]
         public class ReservationsController : Controller
         {
-            private readonly Data.CarToGoContext _context;
+            private readonly CarToGoContext _context;
             private readonly UserManager<DefaultUser> _userManager;
 
-            public ReservationsController(Data.CarToGoContext context, UserManager<DefaultUser> userManager)
+            public ReservationsController(CarToGoContext context, UserManager<DefaultUser> userManager)
             {
                 _context = context;
                 _userManager = userManager;
@@ -40,8 +41,9 @@ namespace CarToGo.Controllers;
                     ModelState.AddModelError("", "End date must be after start date.");
                     return View("New");
                 }
+                var allCars = await _context.Cars.ToListAsync();
 
-                var reservedCarIds = await _context.Reservations
+        var reservedCarIds = await _context.Reservations
                     .Where(r => r.StartDate < endDate && startDate < r.EndDate)
                     .Select(r => r.CarId)
                     .ToListAsync();

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CarToGo.Migrations
+namespace Data.Migrations
 {
     [DbContext(typeof(CarToGoContext))]
     partial class CarToGoContextModelSnapshot : ModelSnapshot
