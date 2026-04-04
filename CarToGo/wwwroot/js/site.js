@@ -1,4 +1,24 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// Simple reveal-on-scroll animation for page sections.
+window.addEventListener("load", function () {
+  const revealElements = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    revealElements.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
 
-// Write your JavaScript code.
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.18,
+    },
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
+});

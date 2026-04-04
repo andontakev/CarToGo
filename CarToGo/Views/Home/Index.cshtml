@@ -2,7 +2,87 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@section PageHero {
+    <section class="hero">
+        <div class="hero-shapes">
+            <span class="shape shape-circle"></span>
+            <span class="shape shape-oval"></span>
+            <span class="shape shape-wave"></span>
+        </div>
+        <div class="container px-4">
+            <div class="row align-items-center gx-5">
+                <div class="col-lg-6">
+                    <div class="hero-content reveal">
+                        <span class="eyebrow">Ride smarter, faster</span>
+                        <h1 class="hero-title">Premium car rental, engineered to move you.</h1>
+                        <p class="hero-subtitle">Discover the best vehicles for every trip with real-time availability, instant reservations, and a sleek digital experience designed for convenience.</p>
+                        <div class="hero-actions mt-4">
+                            <a class="btn btn-primary btn-lg me-3" asp-controller="Cars" asp-action="Index">Browse Cars</a>
+                            <a class="btn btn-outline-light btn-lg" asp-controller="Reservations" asp-action="New">Reserve Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="hero-illustration reveal">
+                        <div class="car-card">
+                            <div class="car-card-top">
+                                <span class="car-type">Electric</span>
+                                <strong class="car-name">Nova Cruiser</strong>
+                            </div>
+                            <div class="car-visual">
+                                <div class="car-window"></div>
+                                <div class="car-wheel wheel-front"></div>
+                                <div class="car-wheel wheel-back"></div>
+                            </div>
+                            <div class="car-specs">
+                                <div>
+                                    <strong>239 km</strong>
+                                    <span>Range</span>
+                                </div>
+                                <div>
+                                    <strong>4.8</strong>
+                                    <span>Rating</span>
+                                </div>
+                                <div>
+                                    <strong>24/7</strong>
+                                    <span>Support</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-badge">
+                            <h4>Flexible rentals</h4>
+                            <p>Book hourly, daily, or weekly with a smooth checkout flow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="section section-features">
+    <div class="container px-4">
+        <div class="text-center mb-5 reveal">
+            <h2 class="section-title">Everything you need for a better car rental experience</h2>
+            <p class="section-description">Fast search, reliable reservations, and automated admin tools make every journey effortless.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card reveal">
+                <h3>Modern fleet</h3>
+                <p>Choose from polished, well-maintained cars with up-to-date details and specs.</p>
+            </div>
+            <div class="feature-card reveal">
+                <h3>Instant booking</h3>
+                <p>Reserve your vehicle in seconds and manage bookings directly from your dashboard.</p>
+            </div>
+            <div class="feature-card reveal">
+                <h3>Admin control</h3>
+                <p>Admins can manage reservations, users, and access rights in a clean workflow.</p>
+            </div>
+            <div class="feature-card reveal">
+                <h3>Secure experience</h3>
+                <p>Robust identity flows and responsive validation keep your users happy and protected.</p>
+            </div>
+        </div>
+    </div>
+</section>
