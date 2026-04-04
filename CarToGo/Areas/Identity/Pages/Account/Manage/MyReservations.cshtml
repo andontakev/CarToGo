@@ -37,15 +37,15 @@ else
                         {
                             <span class="badge bg-warning text-dark">Pending</span>
                         }
-                        else if (r.Status == "Confirmed")
+                        else if (r.Status == "Approved" || r.Status == "Confirmed")
                         {
-                            <span class="badge bg-success">Confirmed</span>
+                            <span class="badge bg-success">Approved</span>
                         }
                         else if (r.Status == "Canceled")
                         {
                             <span class="badge bg-secondary">Canceled</span>
                         }
-                        else
+                        else if (r.Status == "Rejected")
                         {
                             <span class="badge bg-danger">Rejected</span>
                         }
