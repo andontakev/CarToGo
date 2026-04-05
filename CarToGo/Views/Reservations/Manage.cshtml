@@ -6,27 +6,27 @@
 
 <h2>Manage Reservations</h2>
 
-<table class="table table-striped mt-3">
+<table class="table table-striped mt-3 text-light">
     <thead>
         <tr>
-            <th>User</th>
-            <th>Car</th>
-            <th>Period</th>
-            <th>Total Price</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th class="text-light">User</th>
+            <th class="text-light">Car</th>
+            <th class="text-light">Period</th>
+            <th class="text-light">Total Price</th>
+            <th class="text-light">Status</th>
+            <th class="text-light">Actions</th>
         </tr>
     </thead>
 
     <tbody>
         @foreach (var r in Model)
         {
-            <tr>
-                <td class="text-white">@r.User.Email</td>
-                <td class="text-white">@r.Car.Brand @r.Car.Model</td>
-                <td class="text-white">@r.StartDate.ToShortDateString() - @r.EndDate.ToShortDateString()</td>
-                <td class="text-white">@r.TotalPrice</td>
-                <td class="text-white">@r.Status</td>
+            <tr class="text-light">
+                <td class="text-light">@r.User.Email</td>
+                <td class="text-light">@r.Car.Brand @r.Car.Model</td>
+                <td class="text-light">@r.StartDate.ToShortDateString() - @r.EndDate.ToShortDateString()</td>
+                <td class="text-light">@r.TotalPrice</td>
+                <td class="text-light">@r.Status</td>
                 <td>
                     @if (r.Status == "Pending")
                     {
