@@ -22,11 +22,11 @@
         @foreach (var r in Model)
         {
             <tr>
-                <td>@r.User.Email</td>
-                <td>@r.Car.Brand @r.Car.Model</td>
-                <td>@r.StartDate.ToShortDateString() - @r.EndDate.ToShortDateString()</td>
-                <td>@r.TotalPrice</td>
-                <td>@r.Status</td>
+                <td class="text-white">@r.User.Email</td>
+                <td class="text-white">@r.Car.Brand @r.Car.Model</td>
+                <td class="text-white">@r.StartDate.ToShortDateString() - @r.EndDate.ToShortDateString()</td>
+                <td class="text-white">@r.TotalPrice</td>
+                <td class="text-white">@r.Status</td>
                 <td>
                     @if (r.Status == "Pending")
                     {
